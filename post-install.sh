@@ -11,6 +11,34 @@ echo "Installing KDE Plasma..."
 apt update
 apt install kde-plasma-desktop -y
 
+# Configure KDE Plasma as default desktop environment
+echo "Configuring KDE Plasma as the default desktop environment..."
+echo "/usr/bin/startkde" > /etc/X11/xinit/xinitrc
+
+# Software
+packages=(
+    "chromium"
+    "git"
+    "python3"
+    "python3-pip"
+    "htop"
+    "curl"
+    "snapd"
+    "ping"
+    "ifconfig"
+    "openssh-server"
+    "tar"
+    "gedit"
+    "fonts-anonymous-pro"
+)
+
+for pkg in "${packages[@]}"
+do
+    sudo apt install -y "$pkg"
+done
+
+# Install additional programs
+
 # Needed dependencies
 apt install wget gpg software-properties-common apt-transport-https
 
@@ -35,28 +63,6 @@ curl https://sh.rustup.rs -sSf | sh
 
 # Cargo apps
 cargo install alacritty
-
-# More software
-apt install chromium
-apt install git
-apt install python3
-apt install python3-pip
-apt install htop
-apt install curl
-apt install snapd
-apt install ping
-apt install ifconfig
-apt install openssh-server
-apt install tar
-apt install gedit
-apt install fonts-anonymous-pro
-
-# Configure KDE Plasma as default desktop environment
-echo "Configuring KDE Plasma as the default desktop environment..."
-echo "/usr/bin/startkde" > /etc/X11/xinit/xinitrc
-
-# Install additional programs
-# (Here you can add instructions to install other desired programs)
 
 # End of the script
 echo "Installation and configuration completed."
