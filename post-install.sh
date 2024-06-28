@@ -17,6 +17,7 @@ echo "/usr/bin/startkde" > /etc/X11/xinit/xinitrc
 
 # Software
 packages=(
+    "alacritty"
     "chromium"
     "git"
     "python3"
@@ -30,6 +31,11 @@ packages=(
     "tar"
     "gedit"
     "fonts-anonymous-pro"
+    "gcc"
+    "npm"
+    "nodejs"
+    "zsh"
+    "zplug"
 )
 
 for pkg in "${packages[@]}"
@@ -40,7 +46,7 @@ done
 # Install additional programs
 
 # Needed dependencies
-apt install wget gpg software-properties-common apt-transport-https
+apt install -y wget gpg software-properties-common apt-transport-https
 
 # Installing Visual Studio Code
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -50,19 +56,62 @@ sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.mi
 rm -f packages.microsoft.gpg
 
 apt update
-apt install code
+apt install -y code
 
 # Installing Neovim
 wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod +x ./nvim.appimage 
+chmod +x ./nvim.appimage
 mv nvim.appimage /usr/local/bin/nvim
 rm nvim.appimage
+# Setting up Neovim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Install Neovim Plugins
+nvim +PlugInstall +qall
+nvim +"CocInstall coc-sh coc-clangd coc-css coc-go coc-html coc-tsserver coc-json coc-jedi" +qall
+nvim +"CocInstall clangd.install" +qall
+nvim +"CocInstall coc-prettier coc-pairs" +qall
 
-# Installing Cargo (installs rust and cargo with it)
-curl https://sh.rustup.rs -sSf | sh
+# Install Sublime Text
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
+sudo apt-get install apt-transport-https
 
-# Cargo apps
-cargo install alacritty
+# Install Anydesk
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+sudo apt update
+apt install -y anydesk
+
+# Install Snap core
+sudo snap install core
+
+# Install WPS Office Suite
+sudo snap install wps-office
+
+# Install oh-my-zsh
+echo "\nInstalling Oh-My-Zsh\n"
+cd $HOME
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install ZSH plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+
+# Setting up
+
+git clone https://github.com/joelermantraut/dotfiles.git
+cd dotfiles
+yes | rm -r .git
+yes | rm .gitignore README.md
+cd ..
+yes | cp -r dotfiles/. $HOME
+
+# Making zsh default shell
+chsh -s /bin/zsh
 
 # End of the script
 echo "Installation and configuration completed."
