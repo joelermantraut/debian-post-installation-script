@@ -9,13 +9,17 @@ fi
 apt upgrade -y
 
 # Install KDE Plasma
-echo "\nInstalling XFCE...\n"
-apt update
-apt install -y xfce4
+# echo "\nInstalling XFCE...\n"
+# apt update
+# apt install -y xfce4
 
-echo "\nXFCE Installed. Installing SDDM...\n"
+# echo "\nXFCE Installed. Installing SDDM...\n"
 
-apt install --no-install-recommends sddm
+apt remove --purge -y lightdm
+
+apt install --no-install-recommends sddm qml-module-qtquick-layouts qml-module-qtquick-controls2 libqt6svg6
+wget https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip -P /usr/share/sddm/themes/
+echo "[Theme]\nCurrent=catppuccin-mocha"
 
 echo "\nSDDM Installed. Installing user packages...\n"
 
@@ -188,6 +192,7 @@ echo "\nInstalling Oh-My-Zsh...\n"
 cd $HOME
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+echo "\nInstalling Zsh Plugins..\n"
 # Install ZSH plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -195,11 +200,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # Making zsh default shell
 chsh -s /bin/zsh
 
-# Reloading zsh
-zsh
-
 # Setting up
 
+echo "\nDownloading dotfiles...\n"
 echo ".cfg" >>.gitignore
 git clone --bare https://github.com/joelermantraut/debian-dotfiles.git $HOME/.cfg
 
