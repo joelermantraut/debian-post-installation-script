@@ -8,18 +8,9 @@ fi
 
 apt upgrade -y
 
-# Install KDE Plasma
-# echo "\nInstalling XFCE...\n"
-# apt update
-# apt install -y xfce4
-
-# echo "\nXFCE Installed. Installing SDDM...\n"
-
-apt remove --purge -y lightdm
-
-apt install --no-install-recommends sddm qml-module-qtquick-layouts qml-module-qtquick-controls2 libqt6svg6
+apt install -y --no-install-recommends sddm qml-module-qtquick-layouts qml-module-qtquick-controls2 libqt6svg6
 wget https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip -P /usr/share/sddm/themes/
-echo "[Theme]\nCurrent=catppuccin-mocha"
+echo "[Theme]\nCurrent=catppuccin-mocha" >/etc/sddm.conf
 
 echo "\nSDDM Installed. Installing user packages...\n"
 
@@ -85,6 +76,8 @@ packages=(
   "bc"
   "libpcre3-dev" # Needed dependency for i3lock-color
   "libxcb-dpms0-dev"
+  "stow"
+  "gparted"
 )
 
 for pkg in "${packages[@]}"; do
@@ -113,6 +106,7 @@ done
 echo "\nSnap packages installed. Installing Cargo...\n"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+bash
 rustup update
 
 echo "\nInstalling Cargo packages...\n"
@@ -203,8 +197,8 @@ chsh -s /bin/zsh
 # Setting up
 
 echo "\nDownloading dotfiles...\n"
-echo ".cfg" >>.gitignore
-git clone --bare https://github.com/joelermantraut/debian-dotfiles.git $HOME/.cfg
+git clone https://github.com/joelermantraut/dotfiles.git
+stow ~/dotfiles/
 
 # End of the script
 echo "\nInstallation and setting up completed.\n"
