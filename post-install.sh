@@ -16,68 +16,73 @@ echo "\nSDDM Installed. Installing user packages...\n"
 
 # Software
 packages=(
+  # WEB
   "firefox"
-  "git"
-  "python3"
-  "python3-pip"
-  "lxtask"
-  "curl"
-  "snapd"
   "ping"
   "ifconfig"
   "openssh-server"
-  "tar"
-  "xarchiver"
+
+  # DEV
+  "git"
+  "python3"
+  "python3-pip"
   "nano"
   "gcc"
-  "zsh"
-  "zplug"
   "bat"
-  "caffeine"
   "cmake"
-  # "code"
-  "dunst"
-  "feh"
-  "flameshot"
-  "flatpak"
-  "fonts-noto-color-emoji"
-  "fzf"
-  "gdebi"
   "grep"
-  "i3"
-  "imagemagick"
   "meson"
   "ninja"
-  "obs-studio"
+
+  # SYSTEM
+  "software-properties-common"
+  "apt-transport-https"
+  "lxtask"
+  "curl"
+  "snapd"
+  "zsh"
+  "zplug"
+  "caffeine"
+  "dunst"
+  "flameshot"
+  "flatpak"
+  "gdebi"
+  "i3"
   "pass"
-  "pavucontrol"
-  "playerctl"
   "polybar"
-  "redshift"
-  "ripgrep"
   "rofi"
   "scrot"
   "speedcrunch"
-  "thunar"
-  "thunar-archive-plugin"
-  "trashcli"
-  "udiskie"
   "xclip"
   "xdotool"
   "zenity"
   "zoxide"
-  "wget"
-  "gpg"
-  "software-properties-common"
-  "apt-transport-https"
-  "psmisc"
-  "pass"
-  "i3lock"
-  "bc"
   "libpcre3-dev" # Needed dependency for i3lock-color
   "libxcb-dpms0-dev"
-  "stow"
+  "psmisc"
+  "i3lock"
+
+  # FILE
+  "tar"
+  "xarchiver"
+  "feh"
+  "thunar"
+  "thunar-archive-plugin"
+  "fonts-noto-color-emoji"
+  "fzf"
   "gparted"
+  "trashcli"
+  "udiskie"
+  "wget"
+  "stow"
+
+  # MEDIA
+  "imagemagick"
+  "obs-studio"
+  "pavucontrol"
+  "playerctl"
+  "vlc"
+  "gpg"
 )
 
 for pkg in "${packages[@]}"; do
@@ -106,8 +111,7 @@ done
 echo "\nSnap packages installed. Installing Cargo...\n"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-bash
-rustup update
+# rustup update
 
 echo "\nInstalling Cargo packages...\n"
 
@@ -142,6 +146,7 @@ echo "\nInstalling utilities...\n"
 
 echo "\nInstalling greenclip\n"
 wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip -P /usr/bin/
+
 echo "\nInstalling fzf\n"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
