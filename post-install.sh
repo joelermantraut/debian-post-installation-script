@@ -17,9 +17,7 @@ echo -e "\nSDDM Installed. Installing user packages...\n"
 # Software
 packages=(
   # WEB
-  "firefox"
-  "ping"
-  "ifconfig"
+  "firefox-esr"
   "openssh-server"
 
   # DEV
@@ -32,7 +30,7 @@ packages=(
   "cmake"
   "grep"
   "meson"
-  "ninja"
+  "ninja-build"
 
   # SYSTEM
   "software-properties-common"
@@ -162,10 +160,10 @@ cd i3lock-color
 echo -e "\nInstalling betterlockscreen\n"
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
 
-echo -e "\nInstalling Nerd Fonts (this may take a while)\n"
-git clone https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script
-cd nerd-fonts
-./install.sh
+# echo -e "\nInstalling Nerd Fonts (this may take a while)\n"
+# git clone https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script
+# cd nerd-fonts
+# ./install.sh
 
 echo -e "\nCompiling and installing picom\n"
 apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-dpms0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl-dev libegl-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson
@@ -181,13 +179,13 @@ echo -e "\nAll utilities installed.\n"
 
 echo -e "\nInstalling VirtualBox\n"
 
-apt install gnupg2 lsb-release -y
+apt install -y gnupg2 lsb-release -y
 curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/vbox.gpg
 curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/oracle_vbox.gpg
 echo -e "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | tee /etc/apt/sources.list.d/virtualbox.list
 apt update
-apt install linux-headers-$(uname -r) dkms -y
-apt install virtualbox-7.0 -y
+apt install -y linux-headers-$(uname -r) dkms -y
+apt install -y virtualbox-7.0 -y
 
 # Install oh-my-zsh
 echo -e "\nInstalling Oh-My-Zsh...\n"
