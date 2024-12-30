@@ -25,21 +25,22 @@ Post install script, for Debian 12 Bookworm, setted up for me.
 system will show a TTY on boot. Anyway, enter in a TTY before login. There, log in **AS ROOT** and run:
 ```
 usermod -a -G sudo user
-apt install sudo
+apt install sudo git
 ```
 Replace user with your username.
 2. Type `exit`, and log in **WITH YOUR USER**.
 3. Download script, you can use `wget` command like this:
 ```
-wget https://raw.githubusercontent.com/joelermantraut/debian-post-installation-script/refs/heads/main/post-install.sh
+git clone https://github.com/joelermantraut/debian-post-installation-script.git
+cd debian-post-installation-script
 ```
 4. Give script execution permissions:
 ```
-chmod +x post-install.sh
+chmod +x *.sh
 ```
 5. Run script:
 ```
-./post-install.sh
+sudo ./install.sh
 ```
 6. Pay attention to the output, and follow the instructions. Some of the task may require intervention.
 

@@ -17,10 +17,10 @@ cd i3lock-color
 echo -e "\nInstalling betterlockscreen\n"
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
 
-echo -e "\nInstalling Nerd Fonts (this may take a while)\n"
-git clone https://github.com/ryanoasis/nerd-fonts
-cd nerd-fonts
-./install.sh
+# echo -e "\nInstalling Nerd Fonts (this may take a while)\n"
+# git clone https://github.com/ryanoasis/nerd-fonts
+# cd nerd-fonts
+# ./install.sh
 
 echo -e "\nCompiling and installing picom\n"
 apt install -y libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-dpms0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl-dev libegl-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson

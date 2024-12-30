@@ -18,6 +18,7 @@ scripts=(
   "scripts/install_packages.sh"
   "scripts/install_snap_packages.sh"
   "scripts/cargo_packages.sh"
+  "scripts/pip_packages.sh"
   "scripts/install_utilities.sh"
   "scripts/install_virtualbox.sh"
   "scripts/setup_zsh.sh"

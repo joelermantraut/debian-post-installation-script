@@ -19,6 +19,7 @@ packages=(
   "ninja-build"
 
   # SYSTEM
+  "xorg"
   "software-properties-common"
   "apt-transport-https"
   "lxtask"
