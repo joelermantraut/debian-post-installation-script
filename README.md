@@ -25,6 +25,7 @@ Post install script, for Debian 12 Bookworm, setted up for me.
 system will show a TTY on boot. Anyway, enter in a TTY before login. There, log in **AS ROOT** and run:
 ```
 usermod -a -G sudo user
+apt install sudo
 ```
 Replace user with your username.
 2. Type `exit`, and log in **WITH YOUR USER**.

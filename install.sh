@@ -21,6 +21,7 @@ scripts=(
   "scripts/install_utilities.sh"
   "scripts/install_virtualbox.sh"
   "scripts/setup_zsh.sh"
+  "scripts/set_dotfiles.sh"
 )
 
 for script in "${scripts[@]}"; do

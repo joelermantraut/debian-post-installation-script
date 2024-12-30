@@ -3,9 +3,7 @@
 echo "Installing APT packages..."
 packages=(
   # WEB
-  "firefox"
-  "ping"
-  "ifconfig"
+  "firefox-esr"
   "openssh-server"
 
   # DEV
@@ -18,7 +16,7 @@ packages=(
   "cmake"
   "grep"
   "meson"
-  "ninja"
+  "ninja-build"
 
   # SYSTEM
   "software-properties-common"
@@ -58,7 +56,7 @@ packages=(
   "fonts-noto-color-emoji"
   "fzf"
   "gparted"
-  "trashcli"
+  "trash-cli"
   "udiskie"
   "stow"
 
@@ -71,7 +69,7 @@ packages=(
   "gpg"
 )
 
-for pkg in "${packages[@]}"; do
+for pkg en "${packages[@]}"; do
   echo "Installing $pkg..."
   apt install -y "$pkg" || echo "Failed to install $pkg."
 done
