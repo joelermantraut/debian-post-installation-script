@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Check if script is running as root
 if [ "$(id -u)" != "0" ]; then
   echo -e "This script must be run as root."
@@ -31,35 +32,45 @@ packages=(
   "grep"
   "meson"
   "ninja-build"
+  "arduino"
+  "nodejs"
+  "npm"
+  "bpython"
 
   # SYSTEM
   "software-properties-common"
   "apt-transport-https"
+  "build-essential"
   "lxtask"
   "curl"
   "snapd"
-  "zsh"
-  "zplug"
   "caffeine"
-  "dunst"
-  "flameshot"
   "flatpak"
   "gdebi"
+  "psmisc"
+  "pipx"
+  "unzip"
+
+  # GUI
+  "dunst"
+  "flameshot"
   "i3"
-  "pass"
+  "i3lock"
+  "libpcre3-dev" # Needed dependency for i3lock-color
+  "libxcb-dpms0-dev"
   "polybar"
   "rofi"
   "scrot"
   "speedcrunch"
+  "zenity"
+
+  # SHELL
+  "zsh"
+  "zplug"
+  "pass"
   "xclip"
   "xdotool"
-  "zenity"
   "zoxide"
-  "libpcre3-dev" # Needed dependency for i3lock-color
-  "libxcb-dpms0-dev"
-  "psmisc"
-  "i3lock"
-  "pipx"
 
   # FILE
   "tar"
@@ -81,6 +92,7 @@ packages=(
   "playerctl"
   "vlc"
   "gpg"
+  "qimgv"
 )
 
 for pkg in "${packages[@]}"; do
@@ -130,8 +142,15 @@ apt update
 apt install -y code
 
 echo -e "\nInstalling Neovim...\n"
+sudo apt install -y gettext
+git clone https://github.com/neovim/neovim
+cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+git checkout stable
+sudo make install
 
-# Installing Neovim
+echo -e "\nInstalling LazyVim...\n"
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 echo -e "\nInstalling Anydesk...\n"
 
