@@ -5,7 +5,7 @@ Post install script, for Debian 12 Bookworm, setted up for me.
 ## Specs
  - System is oriented to [Catppuccin Mocha theme](https://catppuccin.com/palette).
  - My default windows manager is [i3](https://i3wm.org/).
- - There is another windows manager installed, [XfCE](https://www.xfce.org/), which is a floating WM. I use it to fallback when something fails in i3.
+ - There is another windows manager installed, [Xfce](https://www.xfce.org/), which is a floating WM. I use it to fallback when something fails in i3.
  - The bar for i3 is [Polybar](https://github.com/polybar/polybar).
  - The main terminal is [Alacritty](https://github.com/alacritty/alacritty). There is also x-terminal-emulator, from XfCE.
  - The shell is [Zsh](https://www.zsh.org/) with [Oh-My-Zsh](https://ohmyz.sh/).
@@ -28,7 +28,9 @@ usermod -a -G sudo user
 apt install sudo git
 ```
 Replace user with your username.
+
 2. Type `exit`, and log in **WITH YOUR USER**.
+
 3. Download script, you can use `wget` command like this:
 ```
 git clone https://github.com/joelermantraut/debian-post-installation-script.git
@@ -92,8 +94,9 @@ sudo ./install.sh
 ### VirtualBox
  - https://askubuntu.com/questions/761901/how-to-switch-to-a-tty-in-virtual-box-vm
 
-### other
+### Other
  - https://github.com/yshui/picom/issues/305
+ - https://github.com/i3/i3/issues/2324
 
 
 ## Comments
