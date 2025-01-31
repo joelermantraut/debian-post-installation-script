@@ -20,79 +20,79 @@ packages=(
   # WEB
   "firefox-esr"
   "openssh-server"
-  #
-  # # DEV
-  # "git"
-  # "python3"
-  # "python3-pip"
-  # "nano"
-  # "gcc"
-  # "bat"
-  # "cmake"
-  # "grep"
-  # "meson"
-  # "ninja-build"
-  # "arduino"
-  # "nodejs"
-  # "npm"
-  # "bpython"
-  #
-  # # SYSTEM
-  # "software-properties-common"
-  # "apt-transport-https"
-  # "build-essential"
-  # "lxtask"
-  # "curl"
-  # "snapd"
-  # "caffeine"
-  # "flatpak"
-  # "gdebi"
-  # "psmisc"
-  # "pipx"
-  # "unzip"
-  #
-  # # GUI
-  # "dunst"
-  # "flameshot"
-  # "i3"
-  # "i3lock"
-  # "libpcre3-dev" # Needed dependency for i3lock-color
-  # "libxcb-dpms0-dev"
-  # "polybar"
-  # "rofi"
-  # "scrot"
-  # "speedcrunch"
-  # "zenity"
-  #
-  # # SHELL
-  # "zsh"
-  # "zplug"
-  # "pass"
-  # "xclip"
-  # "xdotool"
-  # "zoxide"
-  #
-  # # FILE
-  # "tar"
-  # "xarchiver"
-  # "feh"
-  # "thunar"
-  # "thunar-archive-plugin"
-  # "fonts-noto-color-emoji"
-  # "fzf"
-  # "gparted"
-  # "trashcli"
-  # "udiskie"
-  # "stow"
-  #
-  # # MEDIA
-  # "imagemagick"
-  # "obs-studio"
-  # "pavucontrol"
-  # "playerctl"
-  # "vlc"
-  # "gpg"
-  # "qimgv"
+
+  # DEV
+  "git"
+  "python3"
+  "python3-pip"
+  "nano"
+  "gcc"
+  "bat"
+  "cmake"
+  "grep"
+  "meson"
+  "ninja-build"
+  "arduino"
+  "nodejs"
+  "npm"
+  "bpython"
+
+  # SYSTEM
+  "software-properties-common"
+  "apt-transport-https"
+  "build-essential"
+  "lxtask"
+  "curl"
+  "snapd"
+  "caffeine"
+  "flatpak"
+  "gdebi"
+  "psmisc"
+  "pipx"
+  "unzip"
+
+  # GUI
+  "dunst"
+  "flameshot"
+  "i3"
+  "i3lock"
+  "libpcre3-dev" # Needed dependency for i3lock-color
+  "libxcb-dpms0-dev"
+  "polybar"
+  "rofi"
+  "scrot"
+  "speedcrunch"
+  "zenity"
+
+  # SHELL
+  "zsh"
+  "zplug"
+  "pass"
+  "xclip"
+  "xdotool"
+  "zoxide"
+
+  # FILE
+  "tar"
+  "xarchiver"
+  "feh"
+  "thunar"
+  "thunar-archive-plugin"
+  "fonts-noto-color-emoji"
+  "fzf"
+  "gparted"
+  "trashcli"
+  "udiskie"
+  "stow"
+
+  # MEDIA
+  "imagemagick"
+  "obs-studio"
+  "pavucontrol"
+  "playerctl"
+  "vlc"
+  "gpg"
+  "qimgv"
 )
 
 for pkg in "${packages[@]}"; do
